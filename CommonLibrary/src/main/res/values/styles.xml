@@ -1,0 +1,85 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorAccent">?attr/AccentColor</item>
+        <item name="android:textColor">?attr/TextColor</item>
+        <item name="android:subtitleTextColor">?attr/SecondTitleTextColor</item>
+        <item name="android:windowBackground">?attr/BackgroundColor</item>
+        <item name="android:colorControlHighlight">?attr/HighlightColor</item>
+        <item name="android:textColorSecondary">?attr/SecondTitleTextColor</item>
+        <item name="android:checkboxStyle">@style/checkbox_style</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+        <item name="android:alertDialogStyle">@style/AlertDialog</item>
+        <item name="android:editTextPreferenceStyle">@style/EditTextStyle</item>
+    </style>
+    
+    
+    <declare-styleable name="ThemeAttr">
+        <attr name="BackgroundColor" format="integer"/>
+        <attr name="HighlightColor" format="integer"/>
+        <attr name="VectorIconColor" format="integer"/>
+        <attr name="PrimaryColor" format="integer"/>
+        <attr name="TextColor" format="integer"/>
+        <attr name="TitleTextColor" format="integer"/>
+        <attr name="SecondTitleTextColor" format="integer"/>
+        <attr name="AccentColor" format="integer"/>
+        <attr name="TransparentColor" format="integer"/>
+    </declare-styleable>
+
+    <!--  Checkbox样式  -->
+    <style name="checkbox_style" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="colorControlActivated">?attr/AccentColor</item>
+        <item name="colorControlNormal">?attr/AccentColor</item>
+        <item name="buttonTint">?attr/VectorIconColor</item>
+    </style>
+    <!-- TextView -->
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">?attr/TextColor</item>
+    </style>
+
+    <!-- Button -->
+    <style name="ButtonStyle" parent="android:Widget.Button">
+        <item name="android:textColor">?attr/AccentColor</item>
+        <item name="android:background">?attr/BackgroundColor</item>
+    </style>
+
+    <style name="EditTextStyle" parent="android:style/Widget.EditText">
+        <item name="android:background">?attr/BackgroundColor</item>
+        <item name="android:editTextBackground">?attr/HighlightColor</item>
+        <item name="android:textColor">?attr/TextColor</item>
+        <item name="android:button">@style/ButtonStyle</item>
+    </style>
+
+
+    <!--  对话框样式  -->
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">?attr/TextColor</item>
+        <item name="android:colorBackground">?attr/BackgroundColor</item>
+        <!--        <item name="android:textColorSecondary">?attr/TextColor</item>-->
+        <!--        <item name="android:textColorPrimary">?attr/TextColor</item>-->
+        <item name="android:colorControlHighlight">@color/dark_gray</item>
+        <!--        <item name="android:windowTitleBackgroundStyle">@style/AlertDialog.TitleWindowStyle</item>-->
+    </style>
+
+    <!--    工具栏属性-->
+    <declare-styleable name="ToolWindow">
+        <attr name="fixedItemWidth" format="dimension" />
+        <!--        标题颜色-->
+        <attr name="toolTitleTextColor" format="integer" />
+        <!--        显示属性-->
+        <attr name="toolDisplayCount" format="integer" />
+        <!--        标题大小-->
+        <attr name="toolTitleTextSize" format="float" />
+        <!--        显示样式-->
+        <attr name="toolStyle" format="integer" />
+        <!--        菜单Item背景-->
+        <attr name="toolItemBackground" format="integer" />
+        <attr name="toolIconColor" format="color" />
+        <!--        菜单资源ID-->
+        <attr name="toolMenu" format="reference" />
+        <!--        是否可选择-->
+        <attr name="toolItemSelectable" format="boolean" />
+        <attr name="menuGravity" format="integer"/>
+    </declare-styleable>
+
+</resources>

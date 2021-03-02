@@ -1,0 +1,26 @@
+<resources>
+   <string-array name="week">
+      <item>@string/week_1</item>
+      <item>@string/week_2</item>
+      <item>@string/week_3</item>
+      <item>@string/week_4</item>
+      <item>@string/week_5</item>
+      <item>@string/week_6</item>
+      <item>@string/week_7</item>
+   </string-array>
+
+   <string-array name="month">
+      <item>@string/month_1</item>
+      <item>@string/month_2</item>
+      <item>@string/month_3</item>
+      <item>@string/month_4</item>
+      <item>@string/month_5</item>
+      <item>@string/month_6</item>
+      <item>@string/month_7</item>
+      <item>@string/month_8</item>
+      <item>@string/month_9</item>
+      <item>@string/month_10</item>
+      <item>@string/month_11</item>
+      <item>@string/month_12</item>
+   </string-array>
+</resources>

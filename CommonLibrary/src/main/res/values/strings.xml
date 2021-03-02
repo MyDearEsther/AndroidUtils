@@ -1,0 +1,37 @@
+<resources>
+   <string name="alert">Alert</string>
+   <string name="confirm">Confirm</string>
+   <string name="cancel">Cancel</string>
+   <string name="settings">Settings</string>
+
+   <string name="week_1">Mon</string>
+   <string name="week_2">Tues</string>
+   <string name="week_3">Wed</string>
+   <string name="week_4">Thur</string>
+   <string name="week_5">Fri</string>
+   <string name="week_6">Sat</string>
+   <string name="week_7">Sun</string>
+
+   <string name="month_1">Jan</string>
+   <string name="month_2">Feb</string>
+   <string name="month_3">Mar</string>
+   <string name="month_4">Apr</string>
+   <string name="month_5">May</string>
+   <string name="month_6">Jun</string>
+   <string name="month_7">Jul</string>
+   <string name="month_8">Aug</string>
+   <string name="month_9">Sept</string>
+   <string name="month_10">Oct</string>
+   <string name="month_11">Nov</string>
+   <string name="month_12">Dec</string>
+
+   <string name="date_format">%4$s, %2$s %3$s, %1$s</string>
+   <string name="month_format">%2$s,%1$s</string>
+   <string name="day_format">%2$s,%1$s %3$s</string>
+   <string name="year_format">%1$s</string>
+   <string name="crash_toast">oops!It seems to have a crash.This error is recorded in local storage.</string>
+   <string name="title_alert">Alert</string>
+   <string name="crash_warning">oops!It seems to have a crash.This error is recorded in local storage.Click confirm to restart app.</string>
+   <string name="next">Next</string>
+   <string name="previous">Previous</string>
+</resources>

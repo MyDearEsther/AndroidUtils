@@ -1,0 +1,2 @@
+include ':CommonLibrary'
+rootProject.name = "AndroidUtils"
