@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'maven-publish'
+apply from: 'maven-publish.gradle'
 
 android {
     compileSdkVersion 29
@@ -57,34 +57,10 @@ dependencies {
 }
 
 
-def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-publishing {
-    publications {
-        Production(MavenPublication) {
-            // 使用方引用 implementation 'cn.com.jack:mavendemo:2.7.0-SNAPSHOT'
-            groupId = "com.weikun.androidutils"
-            artifactId = "CommonLibrary"
-            version = "1.0.0"
-            // 依赖 bundleReleaseAar 任务，并上传其产出的aar
-//            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
-            // 也可以指定上传的AAR包，但是需要先手动生成aar
-//            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
-        }
-    }
-    repositories {
-        // 定义要发布到的远程Maven仓库，可以定义多个，gradle会自动生成发送到指定Maven仓库的task
-        //GitHub Packages仓库
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/MyDearEsther/AndroidUtils")
-            credentials {
-                //用户名
-                username = githubProperties.getProperty("gpr.usr")
-                //token
-                password = githubProperties.getProperty("gpr.key")
-            }
-        }
-    }
+task deploy{
+    dependsOn tasks.clean
+    dependsOn tasks.build
+    dependsOn tasks.publish
+    tasks.preBuild.mustRunAfter(tasks.clean)
+    tasks.generatePomFileForProductionPublication.mustRunAfter(tasks.build)
 }
-

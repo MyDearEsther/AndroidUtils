@@ -1,0 +1,42 @@
+apply plugin: 'maven-publish'
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+publishing {
+    publications {
+        Production(MavenPublication) {
+            //域名
+            groupId = "com.weikun.androidutils"
+            //AAR包名称
+            artifactId = "androidutils"
+            //版本号
+            version = "1.0.0"
+            artifact "build/outputs/aar/CommonLibrary-release.aar"
+            pom.withXml{
+                def dependenciesNode = asNode().appendNode("dependencies")
+                configurations.implementation.allDependencies.forEach(){
+                    Dependency dependency ->
+                        if (dependency.version != "unspecified" && dependency.name != "unspecified"){
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', dependency.group)
+                            dependencyNode.appendNode('artifactId', dependency.name)
+                            dependencyNode.appendNode('version', dependency.version)
+                        }
+                }
+            }
+        }
+    }
+    repositories {
+        // 定义要发布到的远程Maven仓库，可以定义多个，gradle会自动生成发送到指定Maven仓库的task
+        //GitHub Packages仓库
+        maven {
+            name = "Production"
+            url = "https://maven.pkg.github.com/MyDearEsther/AndroidUtils"
+            credentials {
+                //用户名
+                username = githubProperties.getProperty("gpr.usr")
+                //token
+                password = githubProperties.getProperty("gpr.key")
+            }
+        }
+    }
+}
