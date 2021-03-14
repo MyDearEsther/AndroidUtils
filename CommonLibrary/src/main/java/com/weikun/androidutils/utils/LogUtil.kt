@@ -8,7 +8,7 @@ import android.util.Log
  * @date 2020/4/24
  */
 object LogUtil {
-    var TAG = "Debug"
+    var TAG = "CommonDebug"
     var debug: Boolean = true
 
     @JvmStatic

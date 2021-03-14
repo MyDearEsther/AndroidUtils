@@ -82,4 +82,9 @@
         <attr name="menuGravity" format="integer"/>
     </declare-styleable>
 
+<!--    圆形图片-->
+    <declare-styleable name="RoundImageView">
+<!--        弧度-->
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
 </resources>

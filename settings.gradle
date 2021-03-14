@@ -1,2 +1,4 @@
+include ':Demo'
+include ':CameraLibrary'
 include ':CommonLibrary'
 rootProject.name = "AndroidUtils"

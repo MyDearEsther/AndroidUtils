@@ -120,7 +120,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder> {
      * @param v 点击View
      * @param position 条目位置
      */
-    fun setViewClickListener(v: View, position: Int) {
+    protected fun setViewClickListener(v: View, position: Int) {
         if (clickListener != null) {
             v.setOnClickListener { clickListener!!.onItemClick(v, data.get(position), position) }
             v.setOnLongClickListener { clickListener!!.onItemLongClick(v, data.get(position), position) }

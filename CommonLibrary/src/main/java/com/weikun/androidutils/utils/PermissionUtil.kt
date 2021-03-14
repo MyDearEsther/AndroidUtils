@@ -85,19 +85,21 @@ object PermissionUtil {
     }
 
     @JvmStatic
-    fun onRequestPermissionsResult(activity: Activity, requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    fun onRequestPermissionsResult(activity: Activity, requestCode: Int, permissions: Array<out String>, grantResults: IntArray):Boolean {
         if (requestCode == BASE_REQUEST_CODE) {
             for (i in permissions.indices) {
                 if (grantResults[i] != 0) {
                     if (!checkPermission(activity, permissions[i])) {
                         if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, permissions[i])) {
                             askForPermission(activity)
+                            return false
                         }
                         break
                     }
                 }
             }
         }
+        return true
     }
 
 

@@ -77,10 +77,10 @@ class Recyclerview : RecyclerView, SwipeRefreshLayout.OnRefreshListener{
         this.adapter = adapter
         //Item高度固定 避免requestLayout浪费资源
         setHasFixedSize(true)
-        if (spanCount>1){
-            layoutManager = GridLayoutManager(context,spanCount)
+        layoutManager = if (spanCount>1){
+            GridLayoutManager(context,spanCount)
         }else{
-            layoutManager = LinearLayoutManager(context, orientation,false)
+            LinearLayoutManager(context, orientation,false)
         }
     }
 

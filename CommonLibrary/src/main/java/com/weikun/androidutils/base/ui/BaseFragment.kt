@@ -1,8 +1,11 @@
 package com.weikun.androidutils.base.ui
 import android.os.Bundle
+import android.os.Looper
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -13,11 +16,13 @@ import androidx.lifecycle.LifecycleOwner
  * @author lwk
  * @date 2020/4/13
  */
-abstract class BaseFragment: Fragment() {
+abstract class BaseFragment: Fragment(){
     open val uiController: UiController<*>?=null
     protected var mHandler: LifecycleHandler<*>? = null
     private var mContainerView:View? = null
     abstract val layoutId:Int
+    val isOnUiThread: Boolean
+        get() = Looper.getMainLooper().thread.id == Thread.currentThread().id
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mContainerView = View.inflate(context,layoutId,null)
@@ -97,6 +102,16 @@ abstract class BaseFragment: Fragment() {
 
     fun sendMessage(what: Int, arg1: Int, arg2: Int, obj: Any?) {
         mHandler!!.obtainMessage(what, arg1, arg2, obj).sendToTarget()
+    }
+
+    fun toast(message:String,duration:Int){
+        if (isOnUiThread){
+            Toast.makeText(requireContext(),message,duration).show()
+        }else{
+            mContainerView?.post {
+                Toast.makeText(requireContext(),message,duration).show()
+            }
+        }
     }
 
 

@@ -1,5 +1,7 @@
 package com.weikun.androidutils.ui.widget.recyclerview
 
+import android.view.Menu
+import android.view.MenuItem
 
 
 /**
@@ -8,6 +10,7 @@ package com.weikun.androidutils.ui.widget.recyclerview
  *   @date   2020/8/19
  *
  */
+
 class ListAdapterViewModel<T>(private val notifyListener: OnListItemChangeListener) {
 
     interface OnItemStateChangeListener<T> {
@@ -133,9 +136,13 @@ class ListAdapterViewModel<T>(private val notifyListener: OnListItemChangeListen
             return data.size
         }
 
-    fun get(index: Int): T {
+
+    operator fun get(index: Int): T {
         return data[index].item
     }
+
+    operator fun ListAdapterViewModel<T>.get(index: Int): T = get(index)
+
 
 
     val items:ArrayList<T>
